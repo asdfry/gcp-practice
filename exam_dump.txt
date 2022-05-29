@@ -2737,7 +2737,7 @@ ________________
 
 
 
-Q168. An application development team has come to you for advice.They are planning to write and deploy an HTTP(S) API using Go 1.12. The API will have a very unpredictable workload and must remain reliable during peaks in traffic. They want to minimize operational overhead for this application. What approach should you recommend?
+Q168. An application development team has come to you for advice. They are planning to write and deploy an HTTP(S) API using Go 1.12. The API will have a very unpredictable workload and must remain reliable during peaks in traffic. They want to minimize operational overhead for this application. What approach should you recommend?
 
 
 A. Use a Managed Instance Group when deploying to Compute Engine
