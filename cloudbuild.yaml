@@ -13,6 +13,12 @@ steps:
   - 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA'
   - '--region'
   - 'asia-northeast3'
+  - '--command'
+  - 'streamlit'
+  - '--args'
+  - 'run'
+  - '--args'
+  - 'app.py'
   - '--port'
   - '8501'
 images:
