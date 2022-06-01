@@ -1,14 +1,8 @@
-import logging
 import random
 import re
 
 import streamlit as st
 from PIL import Image
-
-logger = logging.getLogger()
-stream_handler = logging.StreamHandler()
-stream_handler.setFormatter(logging.Formatter("%(message)s"))
-logger.addHandler(stream_handler)
 
 st.set_page_config(
     page_title="GCP(PCA) Exam Dump",
@@ -22,20 +16,11 @@ if not "nickname" in st.session_state:
         nickname = st.text_input("Please enter your nickname")
     if nickname:
         st.session_state["nickname"] = nickname
-        logger.info({"nickname": st.session_state["nickname"], "activity": "enter"})
         placeholder.empty()
 
 
 def increment_number():
     st.session_state.number += 1
-    logger.info(
-        {
-            "nickname": st.session_state["nickname"],
-            "activity": "click next",
-            "question_number": idx,
-            "next_question_number": st.session_state["ids"][st.session_state["number"]],
-        }
-    )
 
 
 if "nickname" in st.session_state:
@@ -149,7 +134,6 @@ if "nickname" in st.session_state:
                     f = re.search(r"http.*\)", i)
                     i = f"<a href={f.group()[:-1]}>공식 블로그</a>" + i[f.span()[1]:]
                 st.markdown("<p class='answer'>" + i + "</p>", unsafe_allow_html=True)
-            logger.info({"nickname": st.session_state["nickname"], "activity": "click answer", "question_number": idx})
 
         st.button("Next", on_click=increment_number)
 
