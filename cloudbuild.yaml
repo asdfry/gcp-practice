@@ -1,0 +1,19 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/intnow-gcp-practice/GCP-exam-dumps', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/intnow-gcp-practice/GCP-exam-dumps']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: 
+  - 'run'
+  - 'deploy'
+  - 'GCP-exam-dumps'
+  - '--image'
+  - 'gcr.io/intnow-gcp-practice/GCP-exam-dumps'
+  - '--region'
+  - 'asia-northeast3'
+  - '--port'
+  - '8501'
+images:
+- gcr.io/intnow-gcp-practice/GCP-exam-dumps
