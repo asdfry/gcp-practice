@@ -258,7 +258,7 @@ D. In the Cloud Platform Console, create a new persistent disk attached to the v
 E. In the Cloud Platform Console, create a snapshot of the persistent disk restore the snapshot to a new larger disk, unmount the old disk, mount the new disk and restart the database service
 
 
-공식 문서(https://cloud.google.com/compute/docs/disks/add-persistent-disk#format_and_mount_linux): ssh를 통해 리눅스 인스턴스에 연결하고 파티션 및 파일 시스템의 크기를 수동으로 조정하여 추가한 추가 Disk 공간을 사용합니다. ➜ A 오답
+공식 문서(https://cloud.google.com/compute/docs/disks/add-persistent-disk#format_and_mount_linux): ssh를 통해 리눅스 인스턴스에 연결하고 파티션 및 파일 시스템의 크기를 수동으로 조정하여 추가한 추가 Disk 공간을 사용합니다. ➜ A 정답
 ________________
 
 
