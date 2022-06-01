@@ -1,0 +1,6 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/intnow-gcp-practice/custom-python:3.9-slim', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/intnow-gcp-practice/custom-python:3.9-slim']
+images: ['gcr.io/intnow-gcp-practice/custom-python:3.9-slim']
