@@ -17,3 +17,5 @@ steps:
   - '8501'
 images:
 - 'gcr.io/intnow-gcp-practice/GCP-exam-dumps:$COMMIT_SHA'
+options:
+  logging: CLOUD_LOGGING_ONLY
