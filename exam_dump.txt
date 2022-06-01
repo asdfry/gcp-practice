@@ -67,10 +67,6 @@ Q4. A news feed web service has the following code running on Google App Engine.
 What is the most likely cause of this problem?
 
 
-  
-
-
-
 A. The session variable is local to just a single instance
 B. The session variable is being overwritten in Cloud Datastore
 C. The URL of the API needs to be modified to prevent caching
