@@ -76,7 +76,7 @@ D. The HTTP Expires header needs to be set to -1 stop caching
 Datastore 관련 내용이 없음 ➜ B 오답
 문제 원인이 캐싱 관련 문제가 아님 ➜ C, D 오답
 문제 원인: 세션 객체를 로컬(서버)에서 관리 + 사용자가 많아짐 = 세션이 일관성을 잃어버림
-Stateless Service: 세션, DB 커넥션 등은 클라이언트와 서버 누구도 유지 및 관리하면 안 되고 주로 Redis와 같은 In memory 시스템을 주로 이용해 관리해야함 ➜ A 정답
+Stateless Service: 세션, DB 커넥션 등은 클라이언트와 서버 누구도 유지 및 관리하면 안 되고 주로 Redis와 같은 In memory 시스템을 이용해 관리해야함 ➜ A 정답
 ________________
 
 
