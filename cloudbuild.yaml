@@ -21,6 +21,11 @@ steps:
   - 'app.py'
   - '--port'
   - '8501'
+  - '--min-instances'
+  - '1'
+  - '--max-instances'
+  - '10'
+  - '--allow-unauthenticated'
 images:
 - 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA'
 options:
