@@ -19,6 +19,7 @@ D. Use separate backend pools for each API path behind the load balancer
 
 요구사항 1. 기존 버전 API도 사용 및 배포 ➜ B, C 오답
 요구사항 2. 동일한 SSL과 DNS를 유지 ➜ A 오답
+➜ D 정답
 ________________
 
 
@@ -37,6 +38,7 @@ D. Stream data into Google Cloud Datastore
 요구사항 1. petabyte 데이터 수용 ➜ B 오답
 요구사항 2. SQL interface ➜ C 오답
 요구사항 3. data analytics ➜ C, D 오답 (Datastore = NoSQL database)
+➜ A 정답
 ________________
 
 
@@ -111,8 +113,9 @@ E. Replace the platform's relational database systems with a NoSQL database
 
 
 문제에 DB 관련 이슈는 보이지 않음 ➜ D, E 오답
-그린-블루 배포, 카나리아 배포 둘 다 방법론 자체는 좋으나 QA 환경이 아니라 배포 단계에 접목시키는 방법이며, 개선된 QA는 오류를 80%나 감소시켰음 ➜ B 오답, A 정답
+그린-블루 배포, 카나리아 배포 둘 다 방법론 자체는 좋으나 QA 환경이 아니라 배포 단계에 접목시키는 방법이며, 개선된 QA는 오류를 80%나 감소시켰음 ➜ B 오답
 C는 언제나 확실히 좋은 방법 ➜ C 정답
+➜ A 정답
 ________________
 
 
@@ -132,8 +135,8 @@ F. Store all state in Google Cloud Storage, snapshot the persistent disks, and t
 
 
 요구사항 1. 디스크 상태 유지 ➜ A 정답, B 오답
-요구사항 2. 재무 부서에게 비용 시각화 제공 ➜ C 오답, D 정답
-E는 백업하는데 이상적인 방법이 아니고, F는 이 문제를 해결하기에 너무 복잡한 방법임
+요구사항 2. 재무 부서에게 비용 시각화 제공 ➜ C 오답
+E는 백업하는데 이상적인 방법이 아니고, F는 이 문제를 해결하기에 너무 복잡한 방법임 ➜ D 정답
 ________________
 
 
@@ -299,8 +302,9 @@ C. Schedule a cron script using gsutil ls '"lr gs://backups/** to find and remov
 D. Schedule a cron script using gsutil ls '"l gs://backups/** to find and remove items older than 90 days and schedule it with cron
 
 
-bucket의 파일들의 lifecycle을 정의하는 bucket resource representations는 json으로 작성해야함 ➜ A 오답, B 정답
+bucket의 파일들의 lifecycle을 정의하는 bucket resource representations는 json으로 작성해야함 ➜ A 오답
 C와 D는 클라우드에 적합한 방법이 아님 ➜ C, D 오답
+➜ B 정답
 ________________
 
 
@@ -439,7 +443,8 @@ C. Use Stackdriver Monitoring to look for insights that show when your API laten
 D. Instrument your application with Stackdriver Trace in order to break down the request latencies at each microservice
 
 
-API(request) latency가 언제 높아지는지보다 어디서 높아지는지를 체크하는 것이 더 적합한 방법임 ➜ C 오답, D 정답
+API(request) latency가 언제 높아지는지보다 어디서 높아지는지를 체크하는 것이 더 적합한 방법임 ➜ C 오답
+➜ D 정답
 ________________
 
 
@@ -703,8 +708,9 @@ C. Use public key infrastructure (PKI) to encrypt the message client side using 
 D. Use a trusted certificate authority to enable SSL connectivity between the client application and the server.
 
 
-Encrypting each block and tagging each message at the client side is an overhead on the application. ➜ B, C 오답, D 정답 (커뮤니티 주장)
-SSL ensures the integrity of the wire but short of proving the identity of a specific user. ➜ D 오답, C 정답
+Encrypting each block and tagging each message at the client side is an overhead on the application. ➜ B, C 오답
+SSL ensures the integrity of the wire but short of proving the identity of a specific user. ➜ D 오답
+문제의 정답은 C, 커뮤니티의 정답은 D ➜ C, D 정답
 ________________
 
 
@@ -784,7 +790,8 @@ D. Utilize free tier and committed use discounts. Provide training to the team a
 
 
 committed use discount는 필요한 리소스를 예측할 수 있는 워크로드에 이상적 ➜ C, D 오답
-서비스 비용 관리에 대한 교육을 팀에 제공하는 것이 더 상식적 ➜ A 오답, B 정답
+서비스 비용 관리에 대한 교육을 팀에 제공하는 것이 더 상식적 ➜ A 오답
+➜ B 정답
 ________________
 
 
@@ -924,7 +931,8 @@ D. Deploy your application on App Engine flexible environment and use Cloud VPN 
 
 
 Cloud VPN은 on-premises와 cloud 사이의 안전한 IPSec 연결을 제공함 ➜  A, C 오답
-클라우드 VPN에는 피어 통신을 위한 고정 IP가 필요한데, 표준 환경 App Engine은 IP 없이 완벽하게 관리되는 서비스로, URL 요청을 통해 액세스 ➜ B 오답, D 정답
+클라우드 VPN에는 피어 통신을 위한 고정 IP가 필요한데, 표준 환경 App Engine은 IP 없이 완벽하게 관리되는 서비스로, URL 요청을 통해 액세스 ➜ B 오답
+➜ D 정답
 ________________
 
 
@@ -1047,7 +1055,8 @@ C. Use kubectl to create a Kubernetes cluster. Use the Deployment Manager to cre
 D. Use kubectl to create a Kubernetes cluster. Use kubectl to create the deployment.
 
 
-kubectl은 cloud 명령어를 사용하여 클라우드 콘솔에서 클러스터가 생성된 경우에만 사용 가능함 ➜ C, D 오답, B 정답
+kubectl은 cloud 명령어를 사용하여 클라우드 콘솔에서 클러스터가 생성된 경우에만 사용 가능함 ➜ C, D 오답
+➜ B 정답
 ________________
 
 
@@ -1201,6 +1210,7 @@ D. Create an instance template from the existing disk. Create a custom image fro
 
 snapshot을 만드는 것은 디스크 백업에 적합한 방법 ➜ A, B 오답
 template으로 custom image를 만드는 것은 불가능함 ➜ D 오답
+➜ C 정답
 ________________
 
 
@@ -1292,7 +1302,8 @@ D. Deploy Cloud VPN Gateway in each region. Ensure that each region has at least
 
 
 VPC Network Peering은 동일한 프로젝트에 속하는지 또는 동일한 조직에 속하는지에 관계없이 두 개의 Virtual Private Cloud(VPC) 네트워크에서 내부 IP 주소 연결을 허용하는 것임 ➜ A 오답
-Cloud VPN Gateway은 global이 아니라 regional임 ➜ C 오답, D 정답
+Cloud VPN Gateway은 global이 아니라 regional임 ➜ C 오답
+➜ D 정답
 ________________
 
 
@@ -1322,7 +1333,8 @@ C. Create a deployment and set the maxUnavailable and maxSurge properties. Enabl
 D. Create a deployment and set the maxUnavailable and maxSurge properties. Enable autoscaling on the cluster managed instance group from the GCP Console.
 
 
-공식 문서(https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling#resource-utilization): 클러스터 자동 확장은 console과 kubectl 명령어로 가능 ➜ B 오답, A 정답
+공식 문서(https://cloud.google.com/kubernetes-engine/docs/how-to/horizontal-pod-autoscaling#resource-utilization): 클러스터 자동 확장은 console과 kubectl 명령어로 가능 ➜ B 오답
+➜ A 정답
 ________________
 
 
@@ -1338,7 +1350,8 @@ D. Verify that the Transfer Appliance can replicate files to GCP. Verify that Cl
 
 
 "Transfer Appliance"는 대량의 데이터를 전송하기 위한 물리적 어플라이언스이며 재해 복구 테스트에는 적합하지 않음 ➜ C, D 오답
-Dedicated Interconnect와 direct peering을 같이 사용할 이유가 없음 ➜ A 오답, B 정답
+Dedicated Interconnect와 direct peering을 같이 사용할 이유가 없음 ➜ A 오답
+➜ B 정답
 ________________
 
 
@@ -1734,7 +1747,8 @@ D. Use an unmanaged instance group with an active and standby instance in differ
 
 
 앱이 트래픽을 TCP로 받기 때문에 HTTP 로드 밸런서는 제외 ➜ A, C 오답
-Cloud Filestore은 완전한 제어를 제공하지 않으며 비관리형 인스턴스 그룹은 horizontal scaling을 제공하지 않음 ➜ B 오답, D 정답
+Cloud Filestore은 완전한 제어를 제공하지 않으며 비관리형 인스턴스 그룹은 horizontal scaling을 제공하지 않음 ➜ B 오답
+➜ D 정답
 ________________
 
 
@@ -1916,7 +1930,8 @@ C. Start a new rolling update. Select the Proactive update mode.
 D. Start a new rolling update. Select the Opportunistic update mode.
 
 
-동작 중인 인스턴스는 업데이트하면 안되므로 자동 또는 사전형(Proactive) 업데이트가 아닌 선택적 또는 상황별(Opportunistic) 업데이트를 해야함 ➜ C 오답, D 정답
+동작 중인 인스턴스는 업데이트하면 안되므로 자동 또는 사전형(Proactive) 업데이트가 아닌 선택적 또는 상황별(Opportunistic) 업데이트를 해야함 ➜ C 오답
+➜ D 정답
 ________________
 
 
@@ -2163,7 +2178,7 @@ D. Store static content such as HTML and images in a Cloud Storage bucket. Use C
 
 
 굳이 GKE를 사용해야 할 이유가 없음 ➜ B 오답
-web application의 API를 Cloud Functions을 통해 호스팅하고 Firestore에 사용자 데이터를 저장하는 것이 가장 쉬운 방법임 
+web application의 API를 Cloud Functions을 통해 호스팅하고 Firestore에 사용자 데이터를 저장하는 것이 가장 쉬운 방법임 ➜ D 정답
 문제의 정답은 B, 커뮤니티의 정답(65%)은 D ➜ B, D 정답
 ________________
 
@@ -2211,7 +2226,7 @@ C. Assign the development team group the Project Owner role on the Shopping fold
 D. Assign the development team group only the Project Owner role on the Shopping folder.
 
 
-문제의 정답은 C, discussion의 의견들이 A, B, C로 많이 엇갈림
+문제의 정답은 C, discussion의 의견들이 A, B, C로 많이 엇갈림 ➜ A, B, C 정답
 ________________
 
 
@@ -2457,7 +2472,8 @@ D. Create a Compute Engine instance, and install a NAT Proxy on the instance. Co
 
 
 공식 문서(https://cloud.google.com/nat/docs/overview): Cloud NAT(네트워크 주소 변환)를 사용하면 외부 IP 주소가 없는 특정 리소스가 인터넷에 대한 아웃바운드 연결을 만들 수 있습니다.
-인터넷을 통해 third-party 서비스에 접근이 가능해야 함 ➜ B, C 오답, A 정답
+인터넷을 통해 third-party 서비스에 접근이 가능해야 함 ➜ B, C 오답
+➜ A 정답
 ________________
 
 
@@ -2508,7 +2524,7 @@ C. Use Cloud Profiler to follow up the request latency. Create a custom metric i
 D. Configure Anthos Config Management on your cluster, and create a yaml file that defines the SLO and alerting policy you want to deploy in your cluster.
 
 
-공식 문서(https://cloud.google.com/service-mesh/docs/observability/alert-policy-slo): Cloud Monitoring은 서비스가 Anthos Service Mesh에서 만든 SLO를 위반하는 궤도에 오르면 알림을 트리거할 수 있습니다. ➜ A 오답
+공식 문서(https://cloud.google.com/service-mesh/docs/observability/alert-policy-slo): Cloud Monitoring은 서비스가 Anthos Service Mesh에서 만든 SLO를 위반하는 궤도에 오르면 알림을 트리거할 수 있습니다. ➜ A 정답
 ________________
 
 
@@ -2555,7 +2571,7 @@ C. They should enable Google Stackdriver Debugger on the application code to sho
 D. They should add additional unit tests and production scale load tests on their cloud staging environment.
 
 
-Answer: D
+Answer: D ➜ D 정답
 ________________
 
 
@@ -2570,7 +2586,7 @@ C. Create a group per country. Add analysts to their respective country-groups. 
 D. Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all-analysis' group the IAM role of BigQuery jobUser. Share the appropriate tables with view access with each respective analyst country-group.
 
 
-Answer: B
+Answer: B ➜ B 정답
 ________________
 
 
@@ -2585,7 +2601,7 @@ C. Replace the existing data warehouse with a Compute Engine instance with 96 CP
 D. Replace the existing data warehouse with BigQuery. Use federated data sources.
 
 
-Answer: D
+Answer: D ➜ D 정답
 ________________
 
 
@@ -2600,7 +2616,7 @@ C. Navigate to the Activity page in the Home section. Set category to Data Acces
 D. In the logging section of the console, specify GCE Network as the logging section. Search for the Create Insert entry.
 
 
-Answer: D
+Answer: D ➜ D 정답
 ________________
 
 
@@ -2617,7 +2633,7 @@ E. Create a separate Google Cloud project to use for the load-testing environmen
 F. Ensure that the load tests validate the performance of Cloud Bigtable.
 
 
-Answer: C,E,F
+Answer: C, E, F ➜ C, E, F 정답
 ________________
 
 
@@ -2648,7 +2664,7 @@ D. Create Server Uptime and Error Rate as service level indicators.
 
 
 Request Latency와 Error Rate가 SLI로 가장 적합함
-Answer: A
+Answer: A ➜ A 정답
 ________________
 
 
@@ -2665,7 +2681,7 @@ D. Use Firestore for its scalable and flexible document-based database. Use coll
 
 
 학습용으로 사용 될 데이터이며 시즌별로 분리되야하므로 BQ가 적합함
-Answer: C
+Answer: C ➜ C 정답
 ________________
 
 
@@ -2680,7 +2696,7 @@ C. Install the Stackdriver agent on all of the legacy web servers.
 D. Configure their legacy web servers to allow requests that contain user-Agent HTTP header when the value matches GoogleStackdriverMonitoring- UptimeChecks (https://cloud.google.com/monitoring)
 
 
-Answer: A
+Answer: A ➜ A 정답
 ________________
 
 
@@ -2696,7 +2712,7 @@ D. Google Cloud Datastore
 
 
 Common workloads for Google Cloud Datastore: User profiles, Product catalogs, Game state
-Answer: D
+Answer: D ➜ D 정답
 ________________
 
 
@@ -2712,7 +2728,7 @@ D. Cloud Dataproc, Cloud Pub/Sub, Cloud SQL, and Cloud Dataflow
 E. Cloud Pub/Sub, Compute Engine, Cloud Storage, and Cloud Dataproc
 
 
-Answer: B
+Answer: B ➜ B 정답
 ________________
 
 
@@ -2727,7 +2743,7 @@ C. Org admin, project browser
 D. Project owner, network admin
 
 
-Answer: B
+Answer: B ➜ B 정답
 ________________
 
 
@@ -2743,7 +2759,8 @@ D. Develop the application for App Engine flexible environment using a custom ru
 
 
 요구사항: unpredictable workload, 트래픽 피크에도 안정적
-App Engine flexible는 App Engine standard만큼  빠르게 확장되지 않음 ➜ D 오답, C 정답
+App Engine flexible는 App Engine standard만큼  빠르게 확장되지 않음 ➜ D 오답
+➜ C 정답
 
 
 [a]Java 2 Enterprise Edition

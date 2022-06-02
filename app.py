@@ -14,6 +14,7 @@ st.set_page_config(
 def increment_number():
     st.session_state.number += 1
 
+
 st.title("GCP(PCA) Exam Dump")
 
 with open("exam_dump.txt", encoding="UTF-8") as file:
@@ -102,6 +103,7 @@ with placeholder.container():
     qa = exercises[idx]["Q"]
 
     # Choices
+    count = 0
     for i in exercises[idx]["C"]:
         # 주석을 빨간색으로 처리
         fa = re.findall(r"\[[a-z]+\]", i)
@@ -111,19 +113,39 @@ with placeholder.container():
         f = re.search(r"[A-Z]\.", i)
         if f:
             i = i.replace(f.group(), f"<b>{f.group()}</b>")
+            count += 1
         st.markdown("<p class='choice'>" + i + "</p>", unsafe_allow_html=True)
         qa += i
 
+    alphas = ["A", "B", "C", "D", "E", "F"]
+    checks = {i: st.checkbox(i) for i in alphas[:count]}
+
     # Answer
     if st.button("Answer"):
+        group_string = ""
         for i in exercises[idx]["A"]:
+            sh = re.search(r"➜ [A-Z].*정답", i)
+            if sh:
+                group_string += sh.group()
             if i[:5] == "공식 문서":
-                f = re.search(r"http.*\)", i)
-                i = f"<a href={f.group()[:-1]}>공식 문서</a>" + i[f.span()[1]:]
+                sh = re.search(r"http.*\)", i)
+                i = f"<a href={sh.group()[:-1]}>공식 문서</a>" + i[sh.span()[1] :]
             elif i[:6] == "공식 블로그":
-                f = re.search(r"http.*\)", i)
-                i = f"<a href={f.group()[:-1]}>공식 블로그</a>" + i[f.span()[1]:]
+                sh = re.search(r"http.*\)", i)
+                i = f"<a href={sh.group()[:-1]}>공식 블로그</a>" + i[sh.span()[1] :]
             st.markdown("<p class='answer'>" + i + "</p>", unsafe_allow_html=True)
+
+        correct = False
+        for i in re.findall(r"[A-Z]", group_string):
+            if checks[i] == True:
+                correct = True
+
+        if correct:
+            st.success("Correct")
+            print(f"Q{idx+1} Correct")
+        else:
+            st.error("Wrong")
+            print(f"Q{idx+1} Wrong")
 
     st.button("Next", on_click=increment_number)
 
