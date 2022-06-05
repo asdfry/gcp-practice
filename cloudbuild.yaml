@@ -1,43 +1,9 @@
 # 트리거 사용 시
-# steps:
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA', '.']
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push', 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA']
-# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#   entrypoint: gcloud
-#   args: 
-#   - 'run'
-#   - 'deploy'
-#   - 'gcp-exam-dumps'
-#   - '--image'
-#   - 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA'
-#   - '--region'
-#   - 'asia-northeast3'
-#   - '--command'
-#   - 'streamlit'
-#   - '--args'
-#   - 'run'
-#   - '--args'
-#   - 'app.py'
-#   - '--port'
-#   - '8501'
-#   - '--min-instances'
-#   - '1'
-#   - '--max-instances'
-#   - '10'
-#   - '--allow-unauthenticated'
-# images:
-# - 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA'
-# options:
-#   logging: CLOUD_LOGGING_ONLY
-
-# 트리거 미사용 시 (Firestore 연동을 위함)
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/streamlit:firestore', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/streamlit:firestore']
+  args: ['push', 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args: 
@@ -45,7 +11,7 @@ steps:
   - 'deploy'
   - 'gcp-exam-dumps'
   - '--image'
-  - 'gcr.io/$PROJECT_ID/streamlit:firestore'
+  - 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA'
   - '--region'
   - 'asia-northeast3'
   - '--command'
@@ -61,3 +27,37 @@ steps:
   - '--max-instances'
   - '10'
   - '--allow-unauthenticated'
+images:
+- 'gcr.io/$PROJECT_ID/streamlit:$COMMIT_SHA'
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+# 트리거 미사용 시 (Firestore 연동을 위함)
+# steps:
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['build', '-t', 'gcr.io/$PROJECT_ID/streamlit:firestore', '.']
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['push', 'gcr.io/$PROJECT_ID/streamlit:firestore']
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#   entrypoint: gcloud
+#   args: 
+#   - 'run'
+#   - 'deploy'
+#   - 'gcp-exam-dumps'
+#   - '--image'
+#   - 'gcr.io/$PROJECT_ID/streamlit:firestore'
+#   - '--region'
+#   - 'asia-northeast3'
+#   - '--command'
+#   - 'streamlit'
+#   - '--args'
+#   - 'run'
+#   - '--args'
+#   - 'app.py'
+#   - '--port'
+#   - '8501'
+#   - '--min-instances'
+#   - '1'
+#   - '--max-instances'
+#   - '10'
+#   - '--allow-unauthenticated'
