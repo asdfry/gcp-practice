@@ -1,8 +1,12 @@
 import random
 import re
 
+from google.cloud import firestore
+from google.api_core.exceptions import NotFound
 import streamlit as st
 from PIL import Image
+
+db = firestore.Client(project="intnow-gcp-practice")
 
 st.set_page_config(
     page_title="GCP(PCA) Exam Dump",
@@ -140,12 +144,28 @@ with placeholder.container():
             if checks[i] == True:
                 correct = True
 
+        data = {
+            "total": firestore.Increment(1),
+            "last_access": firestore.SERVER_TIMESTAMP,
+        }
+
         if correct:
             st.success("Correct")
+            data["correct"] = firestore.Increment(1)
             print(f"Q{idx+1} Correct")
         else:
             st.error("Wrong")
             print(f"Q{idx+1} Wrong")
+
+        try:  # 이전 데이터가 존재하는 경우
+            db.collection("questions").document(str(idx+1)).update(data)
+        except NotFound:  # 이전 데이터가 존재하지 않는 경우
+            data["total"] = 1
+            if "correct" in data:
+                data["correct"] = 1
+            else:
+                data["correct"] = 0
+            db.collection("questions").document(str(idx+1)).set(data)
 
     st.button("Next", on_click=increment_number)
 

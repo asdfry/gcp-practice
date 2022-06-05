@@ -360,22 +360,6 @@ ________________
 
 
 
-Q20-Bonus. A new architecture that writes all incoming data to BigQuery has been introduced. You notice that the data is dirty, and want to ensure data quality on an automated daily basis while managing cost.
-What should you do?
-
-
-A. Set up a streaming Cloud Dataflow job, receiving data by the ingestion process. Clean the data in a Cloud Dataflow pipeline.
-B. Create a Cloud Function that reads data from BigQuery and clean it.
-C. Create a SQL statement on the data in BigQuery, and save it as a view. Run a view daily, and save the result to a new table.
-D. Use Cloud Dataprep and configure the BigQuery tables as the source. Schedule a daily job to clean the data.
-
-
-Dataflow, Dataprep 모두 데이터를 깨끗하게 해주는 툴이라 정확한 정답은 모르지만 문제에 “automated daily basis”라고 적혀있고  D가 정답이라고 생각함 ➜ D 정답
-________________
-
-
-
-
 Q21. Your company's user-feedback portal comprises a standard LAMP stack replicated across two zones. It is deployed in the us-central1 region and uses autoscaled managed instance groups on all layers, except the database. Currently, only a small group of select customers have access to the portal. The portal meets a 99,99% availability SLA under these conditions. However next quarter, your company will be making the portal available to all users, including unauthenticated users. You need to develop a resiliency[h] testing strategy to ensure the system maintains the SLA once they introduce additional user load.
 What should you do?
 
@@ -2761,6 +2745,22 @@ D. Develop the application for App Engine flexible environment using a custom ru
 요구사항: unpredictable workload, 트래픽 피크에도 안정적
 App Engine flexible는 App Engine standard만큼  빠르게 확장되지 않음 ➜ D 오답
 ➜ C 정답
+________________
+
+
+
+
+169. A new architecture that writes all incoming data to BigQuery has been introduced. You notice that the data is dirty, and want to ensure data quality on an automated daily basis while managing cost.
+What should you do?
+
+
+A. Set up a streaming Cloud Dataflow job, receiving data by the ingestion process. Clean the data in a Cloud Dataflow pipeline.
+B. Create a Cloud Function that reads data from BigQuery and clean it.
+C. Create a SQL statement on the data in BigQuery, and save it as a view. Run a view daily, and save the result to a new table.
+D. Use Cloud Dataprep and configure the BigQuery tables as the source. Schedule a daily job to clean the data.
+
+
+Dataflow, Dataprep 모두 데이터를 깨끗하게 해주는 툴이라 정확한 정답은 모르지만 문제에 “automated daily basis”라고 적혀있고  D가 정답이라고 생각함 ➜ D 정답
 
 
 [a]Java 2 Enterprise Edition
