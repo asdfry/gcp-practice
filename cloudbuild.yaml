@@ -61,5 +61,3 @@ steps:
   - '--max-instances'
   - '10'
   - '--allow-unauthenticated'
-images:
-- 'gcr.io/$PROJECT_ID/streamlit:firestore'
